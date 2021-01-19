@@ -8,7 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-<h4>You have been logged out</h4>
-<a href="{% url 'website:home' %}">return home page</a>
+<form action="{% url 'register'%}" method="post">
+{% csrf_token %}
+{{form}}
+<button type="submit">SignUP</button></form>
 </body>
 </html>
