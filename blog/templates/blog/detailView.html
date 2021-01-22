@@ -9,6 +9,9 @@
         <span>{{article.text}}</span>
         <p>posted by: {{ article.author }}</p>
         </div>
+<button class="btn btn-warning"><a href="{% url 'blog:update' article.id %}">Update</a></button>
+<button class="btn btn-danger"><a href="{% url 'blog:delete' article.id %}">Delete</a></button>
+
 
 
 {% endblock content %}

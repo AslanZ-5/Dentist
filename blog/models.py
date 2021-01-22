@@ -18,4 +18,4 @@ class Blog(models.Model):
         return a[:180] + ' ...' if len(a) > 180 else a[:180]
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk': self.pk})
+        return reverse('blog:detail', kwargs={'pk': self.pk})

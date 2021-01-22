@@ -127,3 +127,5 @@ EMAIL_USE_SSL = False
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
+
+LOGIN_URL = '/login/'
