@@ -1,0 +1,14 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+<h1>BLOG Detail</h1>
+
+    <div >
+       <h3>{{ article.title }}</h3>
+
+        <span>{{article.text}}</span>
+        <p>posted by: {{ article.author }}</p>
+        </div>
+
+
+{% endblock content %}
