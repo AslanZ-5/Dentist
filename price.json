@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Teeth Whitening Service at Dental Clinic",
+    "stage": "1 times",
+    "price": 100
+  },
+    {
+    "title": "Ceramic crowns and fillings Dental porcelain",
+    "stage": "1 times",
+    "price": 99
+  },
+    {
+    "title": "Remove crowns, bridges Service",
+    "stage": "1 tooth",
+    "price": 50
+  },
+    {
+    "title": "Covering the recession of the gums",
+    "stage": "1 times",
+    "price": 400
+  },
+  {
+    "title": "Consultation, impressions and preparation of models",
+    "stage": "1 times",
+    "price": 35
+  },
+    {
+    "title": "Removal of an old inlay, old crown",
+    "stage": "1 times",
+    "price": 99
+  },
+    {
+    "title": "Overlay teeth whitening ( 2 arches)",
+    "stage": "1 times",
+    "price": 170
+  },
+    {
+    "title": "Standard porcelain and zirconium crown on implant",
+    "stage": "1 tooth",
+    "price": 499
+  },
+    {
+    "title": "Implantation of an implant (price depends on system used)",
+    "stage": "1 times",
+    "price": 600
+  }
+]

@@ -1,0 +1,49 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+ {% load static %}
+
+<section class="dento-pricing-table-area section-padding-100">
+    <div class="container">
+      <div class="row">
+        <!-- Section Heading -->
+        <div class="col-12">
+          <div class="section-heading text-center">
+            <h2>Pricing</h2>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="dento-price-table table-responsive">
+            <table class="table table-borderless mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Service Names</th>
+                  <th scope="col">Stage</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+
+              {% for price in prices %}
+              <tbody>
+                <tr>
+
+                  <th scope="row">{{ price.title }}</th>
+                  <td>{{ price.stage }}</td>
+                  <td>${{ price.price }}</td>
+
+                </tr>
+                </tbody>
+                        {% endfor %}
+
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+{% endblock content %}

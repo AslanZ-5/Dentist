@@ -58,11 +58,10 @@
                   <li><a href="#">Pages</a>
                     <ul class="dropdown">
                       <li><a href="{% url 'website:home' %}">- Home</a></li>
-                      <li><a href="about.html">- About Us</a></li>
+                      <li><a href="{% url 'website:about' %}">- About Us</a></li>
                       <li><a href="service.html">- Service</a></li>
-                      <li><a href="pricing.html">- Pricing</a></li>
+                      <li><a href="{% url 'website:price' %}">- Pricing</a></li>
                       <li><a href="{% url 'blog:blog' %}">- Blog</a></li>
-                      <li><a href="blog-details.html">- Blog Details</a></li>
                       <li><a href="{% url 'website:contact' %}">- Contact</a></li>
                       <li><a href="#">- Dropdown</a>
                         <ul class="dropdown">
@@ -81,15 +80,10 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a href="about.html">About</a></li>
+                  <li><a href="{% url 'website:about' %}">About</a></li>
                   <li><a href="service.html">Service</a></li>
-                  <li><a href="pricing.html">Pricing</a></li>
-                  <li><a href="{% url 'blog:blog' %}">Blog</a>
-                    <ul class="dropdown">
-                      <li><a href="{% url 'blog:blog' %}">- Blog</a></li>
-                      <li><a href="blog-details.html">- Blog Details</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="{% url 'website:price' %}">Pricing</a></li>
+                  <li><a href="{% url 'blog:blog' %}">Blog</a></li>
                   <li><a href="{% url 'website:contact' %}">Contact</a></li>
                 </ul>
               </div>

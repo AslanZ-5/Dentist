@@ -4,7 +4,7 @@ from .forms import ArticleCreationForm
 from django.views.generic import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.views import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 
 
 
@@ -19,7 +19,7 @@ def detailView(request, pk):
     return render(request, 'blog/detailView.html', {'article': article})
 
 
-class updateView(LoginRequiredMixin,UpdateView):
+class updateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     model = Blog
     fields = ['title', 'text']
     template_name = 'blog/update.html'
@@ -28,11 +28,23 @@ class updateView(LoginRequiredMixin,UpdateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
 
 class deleteView(LoginRequiredMixin,DeleteView):
     model = Blog
     template_name = 'blog/delete.html'
     success_url = reverse_lazy('blog:blog')
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
 
 @login_required(login_url='/login/')
 def createView(request):
