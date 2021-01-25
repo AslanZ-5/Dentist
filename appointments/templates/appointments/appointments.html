@@ -1,0 +1,15 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form method="post" action="{% url 'appointments:appointments'%}">
+    {% csrf_token %}
+    <dev style="display:flex;flex-direction:column;">
+    {{form|crispy}}
+    </dev>
+    <button type="submit"> Create Appointment</button>
+
+
+    </form>
+{% endblock content %}

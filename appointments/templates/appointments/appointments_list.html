@@ -1,0 +1,17 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% for ob in objects %}
+<h1>{{ob.name}}</h1>
+<p>{{ob.phone}}</p>
+<p>{{ob.email}}</p>
+<p>{{ob.location}}</p>
+<p>{{ob.date}}</p>
+<p>{{ob.time}}</p>
+<p>{{ob.text}}</p>
+
+
+{% endfor %}
+{% endblock content %}
