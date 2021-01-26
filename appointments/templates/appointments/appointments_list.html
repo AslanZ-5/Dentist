@@ -4,6 +4,7 @@
 
 {% block content %}
 {% for ob in objects %}
+{% if ob.account == user %}
 <h1>{{ob.name}}</h1>
 <p>{{ob.phone}}</p>
 <p>{{ob.email}}</p>
@@ -11,7 +12,8 @@
 <p>{{ob.date}}</p>
 <p>{{ob.time}}</p>
 <p>{{ob.text}}</p>
-
+<p>{{ob.account}}</p>
+{% endif %}
 
 {% endfor %}
 {% endblock content %}

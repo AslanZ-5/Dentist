@@ -5,13 +5,17 @@ from django.views.generic import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.views import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+from django.core.paginator import Paginator
 
 
 
 def blogView(request):
     articles = Blog.objects.all()
+    paginator = Paginator(articles,2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
-    return render(request, 'blog/blogView.html', {'articles': articles})
+    return render(request, 'blog/blogView.html', {'page_obj': page_obj})
 
 
 def detailView(request, pk):
@@ -52,6 +56,7 @@ def createView(request):
         form = ArticleCreationForm(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
+
             instance.author = request.user
             instance.save()
 

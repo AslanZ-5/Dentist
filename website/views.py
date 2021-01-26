@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
-from website.models import Price
+from .models import Price
+from blog.models import Blog
+
+
 
 
 def home(request):
@@ -38,3 +41,22 @@ def about(request):
 def price(request):
     Model = Price.objects.all()
     return render(request, 'website/price.html', {'prices': Model})
+
+
+def sendMessage(request):
+    model1 = Blog.objects.all()[:2]
+    model2 = Price.objects.all()[:2]
+
+    if request.method == 'POST':
+        mail_s = request.POST['nl-email']
+        send_mail(
+         'Newest article and some great offers',
+         f'{model2}, \n {model1}',
+         'asln.zurabov@gmail.com',
+         [f'{mail_s}'],
+         fail_silently=False
+     )
+        return render(request, 'website/sendMessage.html', {"mail_s": mail_s})
+    else:
+
+        return render(request, 'website/sendMessage.html')

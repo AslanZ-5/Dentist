@@ -3,8 +3,8 @@
 {% block content %}
 <h1>BLOG</h1>
 <div style="min-height:400px;display:flex; flex-direction:column;">
-{% if articles %}
-    {% for i in articles %}
+{% if page_obj %}
+    {% for i in page_obj %}
     <div style=" color:blue; display:flex; flex-direction:column; width:50%;">
         <h3><a href="{% url 'blog:detail' pk=i.id %}">{{ i.title }}</a></h3>
 
@@ -12,6 +12,29 @@
         <p>posted by: {{ i.author }}</p>
         </div>
     {% endfor %}
+
+
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+      {% if page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+      {%endif%}
+      {%  for i in page_obj.paginator.page_range %}
+      {% if page_obj.number == i%}
+    <li class="page-item"><a class="page-link" href="?page={{i}}" style="color:red;">{{i}}</a></li>
+      {% elif i > page_obj.number|add:-3  and  i < page_obj.number|add:3  %}
+      <li class="page-item"><a class="page-link" href="?page={{i}}" >{{i}}</a></li>
+      {% endif %}
+
+      {% endfor %}
+      {% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{page_obj.paginator.num_pages}}">Last</a></li>
+            {%endif%}
+
+  </ul>
+</nav>
 {% else %}
     <p>You don't have any Article</p>
 {% endif %}
