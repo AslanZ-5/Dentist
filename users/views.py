@@ -4,7 +4,6 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 
 
-# Create your views here.
 def loginView(request):
     if request.method == "POST":
         form = AuthenticationForm(data=request.POST)
@@ -38,3 +37,7 @@ def registerView(request):
     else:
         form = UserCreationForm()
     return render(request, 'users/register.html', {'form': form})
+
+
+def profile(request):
+    return render(request, 'users/profile.html')

@@ -17,6 +17,7 @@ urlpatterns = [
     path('login/', views.loginView, name='login'),
     path('logout/', views.logoutView,name='logout'),
     path('register/', views.registerView, name='register'),
+    path('profile/',views.profile,name='profile'),
     path('password-reset/',PasswordResetView.as_view(),name='password_reset'),
     path('password-reset/done/',PasswordResetDoneView.as_view(),name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>/',PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
@@ -27,3 +28,6 @@ urlpatterns = [
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if settings.DEBUG:
+    urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
