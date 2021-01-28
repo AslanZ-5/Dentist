@@ -6,7 +6,7 @@
 {% if page_obj %}
     {% for i in page_obj %}
     <div style=" color:blue; display:flex; flex-direction:column; width:50%;">
-        <h3><a href="{% url 'blog:detail' pk=i.id %}">{{ i.title }}</a></h3>
+       <div style="display:flex;">  <img style="width:70px;height:70px" class="rounded-circle article-img" src="{{ i.author.profile.image.url }}" ><h3><a href="{% url 'blog:detail' pk=i.id %}">{{ i.title }}</a></h3></div>
 
         <span>{{i.snippet}}</span>
         <p>posted by: {{ i.author }}</p>

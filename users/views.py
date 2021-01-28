@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
+from .forms import ProfileForm, UserProfileForm
 
 
 def loginView(request):
@@ -40,4 +41,17 @@ def registerView(request):
 
 
 def profile(request):
-    return render(request, 'users/profile.html')
+    if request.method == 'POST':
+        form_a = UserProfileForm(request.POST,instance=request.user)
+        form_b = ProfileForm(request.POST,request.FILES,instance=request.user.profile)
+        if form_a.is_valid() and form_b.is_valid():
+            form_a.save()
+            form_b.save()
+            return redirect('profile')
+    else:
+        form_a = UserProfileForm(instance=request.user)
+        form_b = ProfileForm(instance=request.user.profile)
+
+
+
+    return render(request, 'users/profile.html', {"form_a": form_a, "form_b": form_b})
