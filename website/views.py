@@ -44,9 +44,14 @@ def price(request):
 
 
 def sendMessage(request):
-    model1 = Blog.objects.all()[:2]
-    model2 = Price.objects.all()[:2]
-
+    mod1 = Blog.objects.all()[:2]
+    mod2 = Price.objects.all()[:2]
+    model1 = ''
+    model2 = ''
+    for i in mod1:
+        model1 += f"Blog:\n{i.title}  {i.text} \n"
+    for j in mod2:
+        model2 += f"Offer:\n{j.title}  {j.stage}  {j.price} \n"
     if request.method == 'POST':
         mail_s = request.POST['nl-email']
         send_mail(

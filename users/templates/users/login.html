@@ -1,19 +1,31 @@
+{% extends 'users/userbase.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<form method="post" action="{%url 'login'%}">
+
+
+
+
+{% block content %}
+
+      <form method="post" action="{%url 'login'%}">
     {% csrf_token %}
 
-{{form}}
+{{form|crispy}}
  {%  if request.GET.next %}
         <input type="hidden" name="next" value="{{ request.GET.next }}">
     {% endif %}
     <input type="submit" name="login">
     </form>
+
+{% endblock %}
+
+
+
+
+
+
+
 
 

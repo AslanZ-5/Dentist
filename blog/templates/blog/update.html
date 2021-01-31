@@ -1,11 +1,12 @@
 {% extends 'website/base.html' %}
 {% load static %}
 {% block content %}
+{% load crispy_forms_tags %}
 
 <h1>Update Article</h1>
 <form method="post"  >
 {% csrf_token %}
-{{form}}
+{{form|crispy}}
     <button type="submit">Update</button>
 </form>
 

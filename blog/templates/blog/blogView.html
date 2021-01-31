@@ -1,6 +1,9 @@
 {% extends 'website/base.html' %}
 {% load static %}
 {% block content %}
+{% if user.is_authenticated %}
+    <button  class="btn btn-primary btn-lg" style="position:absolute; right:50px; top:140px;" ><a href="{% url 'blog:art_create'%}"> Create New Article</a></button>
+{% endif %}
 <h1>BLOG</h1>
 <div style="min-height:400px;display:flex; flex-direction:column;">
 {% if page_obj %}
